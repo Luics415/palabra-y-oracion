@@ -10,6 +10,20 @@ Aplicación web católica, responsiva y orientada a la lectura, que reúne la Bi
 
 > Este repositorio conserva el artefacto estático compilado de la aplicación. Es publicable y funcional, pero no sustituye al proyecto fuente original para desarrollo de componentes a gran escala.
 
+## Índice
+
+- [Objetivo](#objetivo)
+- [Qué incluye](#qué-incluye)
+- [Capturas de pantalla](#capturas-de-pantalla)
+- [Arquitectura técnica](#arquitectura-técnica)
+- [Contratos funcionales](#contratos-funcionales)
+- [Ejecución local](#ejecución-local)
+- [Despliegue](#despliegue)
+- [Calidad, accesibilidad y compatibilidad](#calidad-accesibilidad-y-compatibilidad)
+- [Privacidad y seguridad](#privacidad-y-seguridad)
+- [Limitaciones y evolución](#limitaciones-y-deuda-técnica)
+- [Licencia y derechos](#licencia-y-derechos)
+
 ## Objetivo
 
 Palabra y Oración busca ofrecer una experiencia devocional accesible, tranquila y fácil de usar desde computadora o teléfono. Sus objetivos principales son:
@@ -36,19 +50,13 @@ Las categorías devocionales incluyen oraciones diarias, marianas, credos, infan
 
 ## Capturas de pantalla
 
-### Portada en móvil
+| Portada responsiva | Experiencia móvil |
+| --- | --- |
+| <img src="docs/screenshots/portada-movil.png" width="360" alt="Portada responsiva de Palabra y Oración" /> | <img src="docs/screenshots/portada-movil-completa.png" width="360" alt="Experiencia móvil de Palabra y Oración" /> |
 
-<img width="720" height="1600" alt="image" src="https://github.com/user-attachments/assets/ead410f6-e4d6-415e-a183-b06fe2a1cfba" />
+**Controles persistentes del Rosario**
 
-### Experiencia móvil completa
-
-<img width="720" height="1600" alt="image" src="https://github.com/user-attachments/assets/9db58dc3-6fc3-4bf5-88c6-f57b25725f80" />
-<img width="720" height="1600" alt="image" src="https://github.com/user-attachments/assets/e169d17a-a589-4a45-b123-5df3b7a3fb9d" />
-
-
-### Controles persistentes del Rosario
-
-![Panel de lectura del Rosario](docs/screenshots/rosario-controles-lectura.png)
+![Panel de lectura del Rosario con avance y porcentaje](docs/screenshots/rosario-controles-lectura.png)
 
 ## Arquitectura técnica
 
@@ -84,6 +92,26 @@ Navegador
 4. El lector crea una `SpeechSynthesisUtterance` usando una voz disponible en el navegador.
 5. El Rosario guarda misterio, tarjeta y cuenta actual en `localStorage`.
 6. Los módulos usan directorios versionados (`assets/v10`) para evitar que una caché antigua mezcle archivos incompatibles.
+
+## Contratos funcionales
+
+| Área | Entrada | Procesamiento | Salida / persistencia |
+| --- | --- | --- | --- |
+| Biblia | Libro y capítulo seleccionados | Carga diferida del JSON y renderizado de versículos | Vista de lectura; no modifica el contenido fuente |
+| Oraciones | Texto de búsqueda, categoría y longitud | Filtrado local del catálogo | Lista derivada en memoria |
+| Audio | Texto y controles reproducir/pausar/detener | `SpeechSynthesisUtterance` y voz disponible | Audio del dispositivo; sin archivos remotos |
+| Favoritos | Acción explícita del visitante | Alta o baja del identificador | `localStorage` del navegador |
+| Rosario | Misterio, tarjeta y cuenta actual | Máquina de progreso secuencial y avance por audio | Estado visual y `localStorage` |
+| Enrutamiento | URL solicitada | Resolución del lado del cliente y recuperación mediante `404.html` | Página correspondiente sin servidor de aplicación |
+
+### Dependencias del entorno
+
+- Navegador moderno con JavaScript y ES Modules habilitados.
+- Servidor HTTP estático para ejecución local; abrir `index.html` mediante `file://` no es compatible.
+- Web Speech API y una voz española instalada para disponer de lectura por voz.
+- `localStorage` habilitado para conservar favoritos y progreso.
+
+La aplicación no requiere base de datos, variables de entorno, claves privadas ni servicios backend.
 
 ## Decisiones de diseño relevantes
 
@@ -155,6 +183,15 @@ La aplicación se ha verificado en una vista móvil de 390 × 844 px y en escrit
 - animaciones desactivables mediante preferencias del sistema.
 
 Compatibilidad recomendada: versiones recientes de Chrome, Edge, Firefox y Safari. La lectura por voz depende del soporte de Web Speech API y de las voces instaladas.
+
+## Privacidad y seguridad
+
+- No se solicitan cuentas, contraseñas ni datos personales.
+- Favoritos y progreso permanecen en el dispositivo mediante `localStorage`; no se sincronizan ni se envían a un servidor propio.
+- La síntesis de voz usa las capacidades del navegador y del sistema operativo. El tratamiento concreto puede variar según el proveedor del navegador.
+- El sitio no debe incorporar secretos en el repositorio: todo archivo publicado en GitHub Pages es públicamente accesible.
+- Los enlaces externos deben abrirse con aislamiento de contexto (`noopener noreferrer`) cuando corresponda.
+- Para reportar una vulnerabilidad, evita publicar datos sensibles en un issue; contacta al mantenedor mediante los canales indicados en su perfil de GitHub.
 
 ## Limitaciones y deuda técnica
 
