@@ -38,11 +38,13 @@ Las categorías devocionales incluyen oraciones diarias, marianas, credos, infan
 
 ### Portada en móvil
 
-![Portada móvil de Palabra y Oración](docs/screenshots/portada-movil.png)
+<img width="720" height="1600" alt="image" src="https://github.com/user-attachments/assets/ead410f6-e4d6-415e-a183-b06fe2a1cfba" />
 
 ### Experiencia móvil completa
 
-![Vista móvil completa de Palabra y Oración](docs/screenshots/portada-movil-completa.png)
+<img width="720" height="1600" alt="image" src="https://github.com/user-attachments/assets/9db58dc3-6fc3-4bf5-88c6-f57b25725f80" />
+<img width="720" height="1600" alt="image" src="https://github.com/user-attachments/assets/e169d17a-a589-4a45-b123-5df3b7a3fb9d" />
+
 
 ### Controles persistentes del Rosario
 
