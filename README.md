@@ -2,12 +2,11 @@
 
 Aplicación web católica, responsiva y orientada a la lectura, que reúne la Biblia, oraciones tradicionales y un Santo Rosario guiado con seguimiento visual y lectura por voz.
 
-[![Vercel](https://img.shields.io/badge/Vercel-en%20l%C3%ADnea-000000?logo=vercel)](https://palabra-y-oracion.vercel.app/)
-[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-espejo-2ea44f?logo=github)](https://luics415.github.io/palabra-y-oracion/)
+[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-publicado-2ea44f?logo=github)](https://luics415.github.io/palabra-y-oracion/)
 [![Licencia del código](https://img.shields.io/badge/código-MIT-blue.svg)](LICENSE)
+[![Aplicación](https://img.shields.io/badge/aplicación-estática-CB9B46)](https://luics415.github.io/palabra-y-oracion/)
 
-**Sitio en Vercel (Recomendado):** [palabra-y-oracion.vercel.app](https://palabra-y-oracion.vercel.app/)  
-**Espejo en GitHub Pages:** [luics415.github.io/palabra-y-oracion](https://luics415.github.io/palabra-y-oracion/)
+**Sitio publicado:** [luics415.github.io/palabra-y-oracion](https://luics415.github.io/palabra-y-oracion/)
 
 > Este repositorio conserva el artefacto estático compilado de la aplicación. Es publicable y funcional, pero no sustituye al proyecto fuente original para desarrollo de componentes a gran escala.
 
